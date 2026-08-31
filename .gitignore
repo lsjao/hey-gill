@@ -2,3 +2,15 @@
 # The inspo screenshots contain third-party names and photos; this repo is public.
 gill-birthday-invite-handoff.md
 inspo-*.jpg
+
+# local test harnesses
+wave-diag.html
+*-test.html
+_dbg.html
+_measure.html
+_js.html
+_full.html
+_build.py
+_frag.json
+_build.py
+_full.html
