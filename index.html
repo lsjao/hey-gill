@@ -18,6 +18,7 @@
     --sun:#F5B316;      --tangerine:#F0801F; --vermilion:#E8331C;
     --magenta:#EE3D8F;  --grass:#1FA84E;     --sky:#8FBEE8;
     --grape:#5B21A0;    --cream:#FBF0D2;     --ink:#4A2410;
+    --cobalt:#2E5BAA;
 
     /* golden-ratio scale, phi = 1.618 */
     --s5:166px;   /* "Hey, Gill." - set on .groovy.title, not read from here */
@@ -34,7 +35,7 @@
     --display:"Shrikhand",Georgia,serif;
     --body:"Baloo 2",system-ui,sans-serif;
   }
-  @media(max-width:640px){ :root{ --wave-h:82px; } }
+  @media(max-width:640px){ :root{ --wave-h:100px; } }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -79,7 +80,8 @@
     paint-order:stroke;stroke-linejoin:round;
   }
   /* SIZE KNOB: rendered px = font-size x (max-width / 1000).  202 x .82 = 166px */
-  .groovy.title text{font-size:202px;stroke-width:17}
+  /* title takes the sky blue outline; section heads keep the ink one */
+  .groovy.title text{font-size:202px;stroke-width:17;stroke:var(--cobalt)}
   .groovy.head  text{font-size:70px;stroke-width:7}
   .groovy g{filter:drop-shadow(0 7px 0 rgba(74,36,16,.32))}
 
@@ -108,8 +110,14 @@
     box-shadow:0 7px 0 0 var(--ink);
   }
   .hero-date{
-    margin:7px 0 0;font-family:var(--display);font-weight:400;
-    font-size:clamp(13px,2vw,var(--hero-date));line-height:1.2;color:var(--ink);
+    margin:16px 0 0;                 /* a little clear of the banner's 7px shadow */
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(13px,2vw,var(--hero-date));line-height:1.2;
+    color:var(--cream);
+    /* same ink outline the stars, dots and title carry */
+    -webkit-text-stroke:3.5px var(--ink);
+    paint-order:stroke fill;
+    text-shadow:0 3px 0 rgba(74,36,16,.35);
   }
 
   /* ---------- sections ---------- */
@@ -146,6 +154,14 @@
     box-shadow:0 4px 0 0 var(--ink)}
   .chip.date{background:var(--sun);color:var(--ink)}
   .chip.time{background:var(--magenta);color:var(--cream)}
+
+  .note{
+    margin:0 auto var(--s1);max-width:46ch;
+    padding:13px 20px;border-radius:22px;
+    background:var(--sun);color:var(--ink);
+    border:4px solid var(--ink);box-shadow:0 5px 0 0 var(--ink);
+    font-size:16px;font-weight:700;line-height:1.35;text-align:center;
+  }
 
   .mapframe{border:6px solid var(--ink);border-radius:26px;overflow:hidden;
     background:#cfe0ee;line-height:0;box-shadow:0 8px 0 0 var(--ink)}
@@ -194,12 +210,18 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <pattern id="conf" width="460" height="460" patternUnits="userSpaceOnUse">
-      <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#FBF0D2" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(30.0,283.7) scale(0.213) rotate(-15,50,50)"/>
-      <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#E8331C" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(379.7,404.7) scale(0.216) rotate(-7,50,50)"/>
-      <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#8FBEE8" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(317.0,150.2) scale(0.167) rotate(-8,50,50)"/>
-      <circle cx="118.6" cy="110.2" r="2.6" fill="#4A2410" opacity=".75"/>
-      <circle cx="225.5" cy="312.0" r="2.6" fill="#FBF0D2" opacity=".75"/>
+    <pattern id="conf" width="920" height="920" patternUnits="userSpaceOnUse">
+    <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#FBF0D2" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(54.8,570.8) scale(0.399) rotate(-15,50,50)"/>
+    <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#E8331C" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(766.3,817.3) scale(0.405) rotate(-7,50,50)"/>
+    <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#8FBEE8" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(637.0,298.5) scale(0.330) rotate(-8,50,50)"/>
+    <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#1FA84E" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(353.0,104.6) scale(0.396) rotate(13,50,50)"/>
+    <path d="M50 6 L61.8 37.6 L95.1 39.4 L69 60.5 L77.6 92.7 L50 74.5 L22.4 92.7 L31 60.5 L4.9 39.4 L38.2 37.6 Z" fill="#FBF0D2" stroke="#4A2410" stroke-width="7" stroke-linejoin="round" transform="translate(410.2,832.1) scale(0.370) rotate(15,50,50)"/>
+    <circle cx="824.6" cy="63.0" r="6.4" fill="#FBF0D2" stroke="#4A2410" stroke-width="2.4"/>
+    <circle cx="380.0" cy="563.2" r="4.9" fill="#F5B316" stroke="#4A2410" stroke-width="2.4"/>
+    <circle cx="893.5" cy="565.9" r="5.8" fill="#EE3D8F" stroke="#4A2410" stroke-width="2.4"/>
+    <circle cx="44.7" cy="115.5" r="4.6" fill="#8FBEE8" stroke="#4A2410" stroke-width="2.4"/>
+    <circle cx="620.5" cy="597.6" r="4.6" fill="#FBF0D2" stroke="#4A2410" stroke-width="2.4"/>
+    <circle cx="139.4" cy="883.4" r="5.7" fill="#F5B316" stroke="#4A2410" stroke-width="2.4"/>
     </pattern>
   </defs>
 </svg>
@@ -245,11 +267,11 @@
 
   <div class="wave" aria-hidden="true">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,26)" fill="#EE3D8F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,39)" fill="#5B21A0" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,52)" fill="#8FBEE8" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,26)" fill="#EE3D8F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,39)" fill="#5B21A0" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,52)" fill="#8FBEE8" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
     </svg>
   </div>
 </header>
@@ -274,6 +296,7 @@
           <span class="chip date">Sep 12, 2026</span>
           <span class="chip time">6:30 PM</span>
         </div>
+        <p class="note">Shared group dinner is on us! Additional dishes and drinks can be ordered separately.</p>
         <div class="mapframe">
           <iframe title="Map to Borro Manila, Quezon City"
             src="https://maps.google.com/maps?q=Sct.%20Borromeo%20Cor.%20Sct.%20Tobias%2C%20Quezon%20City%2C%20Philippines%2C%201103&amp;z=16&amp;output=embed"
@@ -307,11 +330,11 @@
   </div>
   <div class="wave" aria-hidden="true">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,26)" fill="#F5B316" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,39)" fill="#EE3D8F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,52)" fill="#1FA84E" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,26)" fill="#F5B316" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,39)" fill="#EE3D8F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,52)" fill="#1FA84E" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
     </svg>
   </div>
 </section>
@@ -346,11 +369,11 @@
   </div>
   <div class="wave" aria-hidden="true">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,26)" fill="#F5B316" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,39)" fill="#EE3D8F" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
-      <path transform="translate(0,52)" fill="#5B21A0" d="M0,34 C50,-3 100,-3 150,34 C200,71 250,71 300,34 C350,-3 400,-3 450,34 C500,71 550,71 600,34 C650,-3 700,-3 750,34 C800,71 850,71 900,34 C950,-3 1000,-3 1050,34 C1100,71 1150,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,0)" fill="#E8331C" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,13)" fill="#F0801F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,26)" fill="#F5B316" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,39)" fill="#EE3D8F" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
+      <path transform="translate(0,52)" fill="#5B21A0" d="M0,34 C100,-3 200,-3 300,34 C400,71 500,71 600,34 C700,-3 800,-3 900,34 C1000,71 1100,71 1200,34 L1200,300 L0,300 Z"/>
     </svg>
   </div>
 </section>
