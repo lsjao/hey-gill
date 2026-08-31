@@ -1,12 +1,12 @@
 # Hey, Gill.
 
-Birthday invite page — Magical Birthday Tour theme, 60s psychedelic poster styling.
+Birthday invite page — Yellow Submarine / 60s psychedelic styling.
 
 **Live:** https://lsjao.github.io/hey-gill/
 
 ## The night
 
-**12 September 2026**
+**Saturday, 12 September 2026**
 
 | | Venue | Time |
 |---|---|---|
@@ -15,21 +15,28 @@ Birthday invite page — Magical Birthday Tour theme, 60s psychedelic poster sty
 
 ## Stack
 
-Single static `index.html` with inline CSS and no build step. Two external dependencies:
+Single static `index.html` with inline CSS. No build step, no JS of our own.
 
-- **Google Fonts** — Rammetto One (headlines), Baloo 2 (body), Permanent Marker (accents)
-- **Pinterest `pinit.js`** — the four outfit reference pins. Ad blockers may block this; each pin degrades to a plain link.
+- **Google Fonts** — Shrikhand (display, arched on SVG `textPath`), Baloo 2 (body)
+- **Pinterest `pinit.js`** — the four outfit reference pins. Ad blockers may block
+  this; each pin degrades to a plain link.
 
-Maps use keyless Google Maps embeds, so there's no API key to manage.
+Maps are keyless Google Maps embeds, so there's no API key to manage.
+
+## Type scale
+
+Sizes follow a golden-ratio scale (φ = 1.618) declared as `--s0`…`--s5` in `:root`.
+Two deliberate departures, both commented in the file:
+
+- the title is 250px, which sits between rungs (the rung was 196px)
+- the hero banner and date were stepped down a further ÷1.5, so they hold φ
+  against each other but not against the title
+
+The title is SVG text on a curved path, so its rendered size is
+`font-size × (max-width ÷ viewBox width)` — the two knobs are commented in the CSS.
 
 ## Deploying
 
-GitHub Pages serves `main` from the repo root. Push to `main` and it redeploys in about a minute.
-
-```sh
-git add index.html
-git commit -m "..."
-git push
-```
+GitHub Pages serves `main` from the repo root. Push and it redeploys in about a minute.
 
 `.nojekyll` is present so Jekyll doesn't filter anything.

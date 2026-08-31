@@ -4,407 +4,442 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hey, Gill. — Roll Up for the Birthday Tour</title>
-<meta name="description" content="Gill's birthday. 12 September 2026. Two stops, one magical tour. Borro Manila, then Friends Screen Simulation Golf.">
-<meta name="theme-color" content="#F0E6C8">
+<meta name="description" content="Gill's birthday. Saturday, 12 September 2026. Borro Manila, then Friends Screen Simulation Golf.">
+<meta name="theme-color" content="#F5B316">
 <meta property="og:title" content="Hey, Gill. — Roll Up for the Birthday Tour">
-<meta property="og:description" content="12 September 2026 · Borro Manila, then Friends Screen Simulation Golf. A splendid time is guaranteed for all.">
+<meta property="og:description" content="Saturday, 12 September 2026 · Borro Manila, then Friends Screen Simulation Golf.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20fill='%23F0E6C8'/%3E%3Cpath%20d='M50%2012%20L61%2039%20L90%2041%20L67%2059%20L75%2088%20L50%2071%20L25%2088%20L33%2059%20L10%2041%20L39%2039%20Z'%20fill='%23E8368F'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20fill='%23F5B316'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='42'%20fill='%23241309'%20stroke='%234A2410'%20stroke-width='4'/%3E%3Cg%20fill='none'%20stroke='%236B4526'%20stroke-width='2.6'%3E%3Ccircle%20cx='50'%20cy='50'%20r='34'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='27'/%3E%3C/g%3E%3Ccircle%20cx='50'%20cy='50'%20r='16'%20fill='%23E8331C'%20stroke='%234A2410'%20stroke-width='3'/%3E%3Ccircle%20cx='50'%20cy='50'%20r='3.4'%20fill='%23FBF0D2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Bangers&family=Permanent+Marker&family=Rammetto+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Shrikhand&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#E8368F;
-    --yellow:#F2C94C;
-    --green:#3DA35D;
-    --blue:#2E5BAA;
-    --purple:#5B2C83;
-    --cream:#F0E6C8;
-    --ink:#3A1B57;
-    --paper:#F7EFD8;
-    --head:"Rammetto One","Bangers",Impact,fantasy;
-    --body:"Baloo 2","Fredoka",system-ui,sans-serif;
-    --marker:"Permanent Marker","Bangers",cursive;
+    /* Yellow Submarine / inspo palette */
+    --sun:#F5B316;
+    --tangerine:#F0801F;
+    --vermilion:#E8331C;
+    --magenta:#EE3D8F;
+    --grass:#1FA84E;
+    --sky:#8FBEE8;
+    --aqua:#A5E3F0;
+    --grape:#5B21A0;
+    --cream:#FBF0D2;
+    --ink:#4A2410;
+
+    /* Golden-ratio scale, phi = 1.618, anchored DOWNWARD from the title.
+       196 / 1.618 = 121.1 / 1.618 = 74.9 / 1.618 = 46.3 / 1.618 = 28.6 / 1.618 = 17.7 */
+    --s5:250px;     /* "Hey, Gill." -- set in .groovy.title, not read from here.
+                       NOTE: 250 is not a phi rung above --s4; the rung was 196. */
+    --s4:121.1px;   /* rung is unusable - see note in .banner below */
+    --s3:74.9px;    /* section headings                        */
+    --s2:46.3px;    /* banner, one-line statements             */
+    --s1:28.6px;    /* hero date, venue names, rsvp sub-line   */
+    --s0:17.7px;    /* body, addresses, chips                  */
+    --half:14px;    /* micro-labels: next rung is 10.9px, below a legible floor */
+
+    /* Hero sub-lines, stepped down a further /1.5. This is NOT a phi rung --
+       it keeps banner:date at 1.618 but takes the pair off the title's grid.
+       A /1.618 step instead would land on --s1 (28.6) and --s0 (17.7). */
+    --hero-banner:30.9px;   /* --s2 / 1.5 */
+    --hero-date:19.1px;     /* --s1 / 1.5 */
+
+    --display:"Shrikhand",Georgia,serif;
+    --body:"Baloo 2",system-ui,sans-serif;
   }
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0;
-    background-color:var(--cream);
-    color:var(--ink);
-    font-family:var(--body);
-    font-size:17px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    margin:0;background:var(--sun);color:var(--ink);
+    font-family:var(--body);font-size:var(--s0);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
-  /* aged-paper grain */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  .inner{max-width:1180px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+
+  /* ---------- groovy arched display type ---------- */
+  .groovy{display:block;width:100%;margin:0 auto;overflow:visible}
+  .groovy text{
+    font-family:var(--display);
+    fill:var(--cream);stroke:var(--ink);
+    paint-order:stroke;stroke-linejoin:round;
+  }
+  /* SIZE KNOB for "Hey, Gill."  -- rendered px = font-size x (1240 / 1000).
+     202 -> 250px. The string is ~4.28em wide, so it uses 863 of the arc's
+     950 units; ~222 (275px) is the real ceiling before it outgrows the arc. */
+  .groovy.title text{font-size:202px;stroke-width:17}
+  /* renders at --s3 (74.9px) when the svg hits its 856px cap */
+  .groovy.head  text{font-size:70px;stroke-width:7}
+  .groovy g{filter:drop-shadow(0 7px 0 rgba(74,36,16,.32))}
+
+  /* ---------- confetti dots ---------- */
+  .confetti{
+    position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.55;
     background-image:
-      radial-gradient(circle at 18% 22%, rgba(139,94,30,.10) 0 1px, transparent 1.6px),
-      radial-gradient(circle at 62% 71%, rgba(139,94,30,.09) 0 1px, transparent 1.6px),
-      radial-gradient(circle at 84% 34%, rgba(139,94,30,.07) 0 1px, transparent 1.6px);
-    background-size:37px 37px,53px 53px,71px 71px;
+      radial-gradient(circle,currentColor 2.6px,transparent 3.1px),
+      radial-gradient(circle,currentColor 1.9px,transparent 2.4px);
+    background-size:150px 195px,215px 165px;
+    background-position:24px 34px,96px 128px;
   }
-  .wrap{position:relative;z-index:1}
-  .inner{max-width:1000px;margin:0 auto;padding:0 22px}
 
-  /* ---------- rainbow divider ---------- */
-  .rainbow{display:block;width:100%;height:34px;border:0;margin:0}
-  .rainbow span{display:block;height:20%}
-  .rainbow .s1{background:var(--pink)}
-  .rainbow .s2{background:var(--yellow)}
-  .rainbow .s3{background:var(--green)}
-  .rainbow .s4{background:var(--blue)}
-  .rainbow .s5{background:var(--purple)}
+  /* ---------- wavy nested dividers ---------- */
+  .wavy{display:block;width:100%;height:120px;margin:0;position:relative;z-index:3}
+  .wavy svg{display:block;width:100%;height:100%}
+  @media(max-width:640px){.wavy{height:78px}}
 
-  /* ---------- hero ---------- */
-  .hero{position:relative;overflow:hidden;padding:44px 0 56px;text-align:center}
-  .hero .rays{
-    position:absolute;left:50%;top:34%;width:210vmax;height:210vmax;
-    transform:translate(-50%,-50%);z-index:0;pointer-events:none;
-    background:repeating-conic-gradient(from 0deg,
-      rgba(242,201,76,.62) 0deg 5.4deg,
-      rgba(242,201,76,0)  5.4deg 10.8deg);
-    -webkit-mask-image:radial-gradient(closest-side,#000 12%,rgba(0,0,0,.7) 42%,transparent 72%);
-    mask-image:radial-gradient(closest-side,#000 12%,rgba(0,0,0,.7) 42%,transparent 72%);
-    animation:spin 260s linear infinite;
+  /* ---------- hero: everything centred in one clump ---------- */
+  .hero{
+    position:relative;overflow:hidden;text-align:center;color:var(--ink);
+    min-height:100vh;min-height:100svh;
+    display:grid;place-items:center;
+    padding:var(--s2) 0;
   }
-  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){.hero .rays{animation:none}}
-  .hero .inner{position:relative;z-index:1}
+  .hero .edge{position:absolute;top:0;bottom:0;width:132px;z-index:1;pointer-events:none}
+  .hero .edge svg{width:100%;height:100%;display:block}
+  .hero .edge.l{left:0}
+  .hero .edge.r{right:0;transform:scaleX(-1)}
+  @media(max-width:900px){.hero .edge{width:60px}}
+  @media(max-width:560px){.hero .edge{display:none}}
 
-  .arc{width:100%;max-width:900px;margin:0 auto;display:block;overflow:visible}
-  .arc text{font-family:var(--head);font-size:104px;letter-spacing:1px}
+  .hero-stack{
+    /* 1280 - 40 padding = a 1240px content box, so the title hits its cap exactly */
+    max-width:1280px;margin:0 auto;padding:0 20px;
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;align-items:center;
+    gap:2px;                         /* the three lines stack tight, dead centre */
+  }
+  .hero-stack h1{margin:0;width:100%;line-height:0}
+  /* WIDTH KNOB -- this cap multiplies the font-size above into the rendered size */
+  .hero-stack .groovy.title{max-width:1240px}
 
   .banner{
-    display:inline-block;margin:6px auto 0;padding:11px 34px;
-    background:var(--purple);color:var(--cream);
-    border-radius:999px;border:4px solid var(--ink);
-    font-family:var(--head);font-size:clamp(13px,2.6vw,21px);
-    letter-spacing:.14em;text-transform:uppercase;
-    box-shadow:0 0 0 5px var(--yellow),0 0 0 10px var(--pink),0 8px 0 10px rgba(58,27,87,.22);
+    display:inline-block;
+    margin:0;                        /* spacing comes from .hero-stack gap */
+    padding:.5em 1.4em;
+    background:var(--vermilion);color:var(--cream);
+    border-radius:999px;border:5px solid var(--ink);
+    font-family:var(--body);font-weight:800;
+    font-size:clamp(11px,2.5vw,var(--hero-banner));
+    letter-spacing:.16em;text-transform:uppercase;line-height:1.2;
+    box-shadow:0 7px 0 0 var(--ink);
   }
-  .datestar{
-    position:relative;display:flex;align-items:center;justify-content:center;
-    gap:14px;margin:36px auto 0;flex-wrap:wrap;
-  }
-  .datestar .txt{
-    font-family:var(--marker);font-size:clamp(19px,4vw,30px);color:var(--pink);
-    letter-spacing:.03em;
-  }
-  .star{width:34px;height:34px;flex:0 0 auto}
-  .hero-sub{
-    margin:18px auto 0;max-width:620px;font-size:clamp(15px,2.4vw,19px);
-    font-weight:600;color:var(--ink);opacity:.85;
+  .hero-date{
+    margin:7px 0 0;                  /* just enough to clear the banner's 7px drop shadow */
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(13px,2vw,var(--hero-date));  /* stays 1.618 below the banner */
+    line-height:1.2;color:var(--ink);
   }
 
   /* ---------- sections ---------- */
-  section{padding:62px 0 66px;position:relative}
-  #details{background:linear-gradient(180deg,var(--paper),var(--cream))}
-  #outfit{background:var(--cream)}
-  #rsvp{background:var(--purple);color:var(--cream)}
+  section{position:relative;padding:var(--s3) 0}
+  #details{background:var(--sky);color:var(--ink)}
+  #outfit{background:var(--grass);color:var(--cream)}
+  #rsvp{background:var(--grape);color:var(--cream);text-align:center}
 
-  .sec-head{text-align:center;margin:0 0 46px}
-  .sec-head .pill{
-    display:inline-block;padding:10px 30px;border-radius:999px;
-    font-family:var(--head);font-size:clamp(17px,3.4vw,30px);
-    letter-spacing:.1em;text-transform:uppercase;
-    border:4px solid var(--ink);
-  }
-  .sec-head .pill.a{background:var(--pink);color:var(--cream);box-shadow:0 0 0 5px var(--yellow),0 6px 0 5px rgba(58,27,87,.2)}
-  .sec-head .pill.b{background:var(--green);color:var(--cream);box-shadow:0 0 0 5px var(--blue),0 6px 0 5px rgba(58,27,87,.2)}
-  .sec-head .kicker{
-    display:block;margin-top:16px;font-family:var(--marker);
-    font-size:clamp(14px,2.6vw,19px);color:var(--purple);
-  }
+  /* 856px cap makes the 70px viewBox text render at --s3 (74.9px) */
+  .sec-head{margin:0 auto var(--s2);max-width:856px}
 
   /* ---------- stop cards ---------- */
-  .stops{display:grid;gap:44px}
-  @media(min-width:880px){.stops{grid-template-columns:1fr 1fr;gap:34px}}
+  /* single column so each map spans the full container width */
+  .stops{display:grid;gap:var(--s3)}
 
   .card{
-    position:relative;background:var(--paper);
-    border:5px solid var(--ink);border-radius:26px;
-    padding:56px 26px 26px;
-    box-shadow:0 0 0 5px var(--yellow),0 0 0 10px var(--pink),0 14px 0 10px rgba(58,27,87,.18);
-  }
-  .card::before{
-    content:"";position:absolute;left:0;right:0;top:0;height:14px;
-    border-radius:20px 20px 0 0;
-    background:linear-gradient(90deg,
-      var(--pink) 0 20%,var(--yellow) 20% 40%,var(--green) 40% 60%,
-      var(--blue) 60% 80%,var(--purple) 80% 100%);
+    position:relative;background:var(--cream);
+    border:6px solid var(--ink);border-radius:38px;
+    padding:var(--s2) 24px var(--s1);
+    box-shadow:0 12px 0 0 var(--ink);
   }
   .num{
-    position:absolute;top:-34px;left:50%;transform:translateX(-50%);
-    width:62px;height:62px;border-radius:50%;
-    background:var(--purple);color:var(--cream);
+    position:absolute;top:-32px;left:50%;transform:translateX(-50%);
+    width:66px;height:66px;border-radius:50%;
+    background:var(--sun);color:var(--ink);
     display:grid;place-items:center;
-    font-family:var(--head);font-size:27px;line-height:1;
-    border:4px solid var(--ink);
-    box-shadow:0 0 0 5px var(--yellow),0 0 0 10px var(--green),0 0 0 15px var(--ink);
+    font-family:var(--display);font-size:30px;line-height:1;
+    border:5px solid var(--ink);box-shadow:0 5px 0 0 var(--ink);
   }
   .stop-label{
-    text-align:center;font-family:var(--marker);color:var(--pink);
-    font-size:15px;letter-spacing:.16em;text-transform:uppercase;margin:6px 0 4px;
+    text-align:center;font-weight:800;color:var(--vermilion);
+    font-size:var(--half);letter-spacing:.2em;text-transform:uppercase;margin:4px 0 6px;
   }
   .venue{
-    text-align:center;font-family:var(--head);
-    font-size:clamp(21px,3.6vw,29px);line-height:1.2;
-    margin:0 0 12px;color:var(--purple);
+    text-align:center;font-family:var(--display);font-weight:400;
+    font-size:clamp(22px,3.4vw,var(--s1));line-height:1.22;
+    margin:0 0 12px;color:var(--ink);
   }
-  .addr{
-    text-align:center;margin:0 auto 20px;max-width:34ch;
-    font-size:15.5px;font-weight:600;opacity:.82;
-  }
-  .when{
-    display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;
-  }
+  .addr{text-align:center;margin:0 auto 20px;max-width:36ch;font-size:var(--s0);font-weight:600;opacity:.85}
+  .when{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:var(--s1)}
   .chip{
-    padding:7px 17px;border-radius:999px;border:3px solid var(--ink);
-    font-family:var(--body);font-weight:800;font-size:14.5px;
-    letter-spacing:.04em;white-space:nowrap;
+    padding:8px 19px;border-radius:999px;border:4px solid var(--ink);
+    font-weight:800;font-size:var(--s0);letter-spacing:.05em;white-space:nowrap;
+    box-shadow:0 4px 0 0 var(--ink);
   }
-  .chip.date{background:var(--yellow);color:var(--ink)}
-  .chip.time{background:var(--blue);color:var(--cream)}
+  .chip.date{background:var(--sun);color:var(--ink)}
+  .chip.time{background:var(--magenta);color:var(--cream)}
 
+  /* --- enlarged maps --- */
   .mapframe{
-    border:4px solid var(--ink);border-radius:18px;overflow:hidden;
-    box-shadow:0 0 0 4px var(--green);background:#dcd2b4;
-    line-height:0;
+    border:6px solid var(--ink);border-radius:26px;overflow:hidden;
+    background:#cfe0ee;line-height:0;box-shadow:0 8px 0 0 var(--ink);
   }
-  .mapframe iframe{width:100%;height:232px;border:0;display:block;filter:saturate(1.08)}
+  .mapframe iframe{width:100%;height:520px;border:0;display:block}
+  @media(max-width:1000px){.mapframe iframe{height:420px}}
+  @media(max-width:600px){.mapframe iframe{height:340px}}
 
   .pin{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    margin-top:20px;padding:13px 20px;
-    background:var(--pink);color:var(--cream);
-    font-family:var(--head);font-size:14.5px;letter-spacing:.09em;text-transform:uppercase;
-    text-decoration:none;border:4px solid var(--ink);border-radius:999px;
-    box-shadow:0 6px 0 0 var(--ink);
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin-top:var(--s1);padding:15px 22px;
+    background:var(--vermilion);color:var(--cream);
+    font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;
+    text-decoration:none;border:5px solid var(--ink);border-radius:999px;
+    box-shadow:0 7px 0 0 var(--ink);
     transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
   }
-  .pin:hover,.pin:focus-visible{background:var(--purple);transform:translateY(3px);box-shadow:0 3px 0 0 var(--ink)}
-  .pin svg{width:17px;height:17px;flex:0 0 auto}
+  .pin:hover,.pin:focus-visible{background:var(--magenta);transform:translateY(4px);box-shadow:0 3px 0 0 var(--ink)}
+  .pin svg{width:19px;height:19px;flex:0 0 auto}
 
   /* ---------- outfit ---------- */
-  .swatches{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin:0 0 38px}
-  .sw{width:38px;height:38px;border-radius:50%;border:3px solid var(--ink);box-shadow:0 4px 0 rgba(58,27,87,.2)}
-
-  .pins{
-    display:grid;gap:22px;justify-items:center;
-    grid-template-columns:repeat(auto-fit,minmax(238px,1fr));
+  .dress{
+    text-align:center;font-family:var(--display);
+    font-size:clamp(23px,5vw,var(--s2));color:var(--cream);
+    margin:0 0 var(--s1);text-shadow:0 4px 0 rgba(74,36,16,.38);
   }
+  .swatches{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 0 var(--s2)}
+  .sw{width:42px;height:42px;border-radius:50%;border:4px solid var(--ink);box-shadow:0 4px 0 rgba(74,36,16,.5)}
+
+  .pins{display:grid;gap:24px;justify-items:center;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .pinbox{
-    width:100%;max-width:290px;min-height:210px;
-    background:var(--paper);border:4px solid var(--ink);border-radius:20px;
-    box-shadow:0 0 0 4px var(--yellow),0 9px 0 4px rgba(58,27,87,.18);
-    padding:14px;display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
+    width:100%;max-width:300px;min-height:220px;
+    background:var(--cream);border:5px solid var(--ink);border-radius:26px;
+    box-shadow:0 9px 0 0 var(--ink);
+    padding:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;
   }
   .pinbox [data-pin-do]{display:block;text-align:center}
   .pin-fallback{
-    font-family:var(--marker);color:var(--purple);text-decoration:none;
-    font-size:16px;line-height:1.4;display:block;padding:26px 10px;
+    font-family:var(--display);color:var(--vermilion);text-decoration:none;
+    font-size:19px;line-height:1.4;display:block;padding:30px 10px;
   }
-  .pin-fallback:hover{color:var(--pink)}
-  .pin-note{
-    text-align:center;margin:30px auto 0;max-width:46ch;
-    font-size:14.5px;font-weight:600;opacity:.7;
-  }
+  .pin-fallback:hover{color:var(--grape)}
 
   /* ---------- rsvp ---------- */
-  #rsvp{text-align:center;padding:70px 0 74px}
-  #rsvp .rsvp-pill{
-    display:inline-block;padding:9px 28px;border-radius:999px;
-    background:var(--yellow);color:var(--ink);border:4px solid var(--ink);
-    font-family:var(--head);font-size:clamp(15px,3vw,24px);
-    letter-spacing:.14em;text-transform:uppercase;
-    box-shadow:0 0 0 5px var(--pink);
-  }
   #rsvp .line{
-    margin:40px auto 0;max-width:20ch;
-    font-family:var(--marker);color:var(--cream);
-    font-size:clamp(28px,7vw,52px);line-height:1.25;
+    margin:0 auto;max-width:18ch;
+    font-family:var(--display);color:var(--cream);
+    font-size:clamp(26px,5.6vw,var(--s2));line-height:1.22;
+    text-shadow:0 6px 0 rgba(74,36,16,.45);
   }
-  #rsvp .stars{display:flex;justify-content:center;gap:16px;margin-top:34px}
-  #rsvp .stars .star{width:26px;height:26px}
-
-  footer{
-    background:var(--cream);text-align:center;padding:34px 22px 44px;
-    font-family:var(--marker);color:var(--purple);font-size:15px;letter-spacing:.04em;
+  #rsvp .sub{
+    margin:var(--s1) auto 0;max-width:26ch;
+    font-weight:700;color:var(--cream);
+    font-size:clamp(18px,3.4vw,var(--s1));line-height:1.35;
   }
+  #rsvp .discs{display:flex;justify-content:center;gap:24px;margin-top:var(--s2)}
+  #rsvp .discs svg{width:52px;height:52px;filter:drop-shadow(0 5px 0 rgba(74,36,16,.4))}
 
-  :focus-visible{outline:4px solid var(--blue);outline-offset:3px;border-radius:6px}
-
-  @media(max-width:600px){
-    .card{padding:52px 18px 22px}
-    .mapframe iframe{height:200px}
-    .arc text{font-size:112px}
-  }
+  :focus-visible{outline:5px solid var(--grape);outline-offset:4px;border-radius:8px}
 </style>
 </head>
 <body>
 
-<!-- reusable star -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="s-star" viewBox="0 0 100 100">
-    <path d="M50 4 L62 36 L96 39 L70 61 L78 95 L50 76 L22 95 L30 61 L4 39 L38 36 Z"/>
+  <!-- vinyl record: disc is fixed, label takes currentColor -->
+  <symbol id="s-vinyl" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="#241309" stroke="#4A2410" stroke-width="5"/>
+    <path d="M50 12 A38 38 0 0 1 88 50" fill="none" stroke="#FBF0D2" stroke-width="7"
+          stroke-linecap="round" opacity=".16"/>
+    <g fill="none" stroke="#6B4526" stroke-width="1.6" opacity=".85">
+      <circle cx="50" cy="50" r="39"/>
+      <circle cx="50" cy="50" r="34"/>
+      <circle cx="50" cy="50" r="29"/>
+      <circle cx="50" cy="50" r="24"/>
+    </g>
+    <circle cx="50" cy="50" r="17" fill="currentColor" stroke="#4A2410" stroke-width="3.5"/>
+    <circle cx="50" cy="50" r="3.4" fill="#FBF0D2" stroke="#4A2410" stroke-width="1.6"/>
   </symbol>
+  <!-- vertical wavy edge band -->
+  <path id="edgewave" d="M66,0 C16,105 116,205 66,310 C16,415 116,515 66,620 C16,725 116,825 66,930 L-40,930 L-40,0 Z"/>
+  <!-- horizontal wave for dividers -->
+  <path id="wv" d="M0,70 C160,14 320,120 480,66 C640,12 800,118 960,64 C1090,20 1160,86 1200,58 L1200,260 L0,260 Z"/>
 </svg>
 
-<div class="wrap">
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="confetti" style="color:#4A2410" aria-hidden="true"></div>
 
-  <!-- ============ HERO ============ -->
-  <header class="hero">
-    <div class="rays" aria-hidden="true"></div>
-    <div class="inner">
+  <div class="edge l" aria-hidden="true">
+    <svg viewBox="0 0 132 930" preserveAspectRatio="none">
+      <use href="#edgewave" x="-46" fill="#E8331C"/>
+      <use href="#edgewave" x="-24" fill="#F0801F"/>
+      <use href="#edgewave" x="-2"  fill="#EE3D8F"/>
+      <use href="#edgewave" x="20"  fill="#F5B316"/>
+    </svg>
+  </div>
+  <div class="edge r" aria-hidden="true">
+    <svg viewBox="0 0 132 930" preserveAspectRatio="none">
+      <use href="#edgewave" x="-46" fill="#E8331C"/>
+      <use href="#edgewave" x="-24" fill="#F0801F"/>
+      <use href="#edgewave" x="-2"  fill="#EE3D8F"/>
+      <use href="#edgewave" x="20"  fill="#F5B316"/>
+    </svg>
+  </div>
 
-      <h1 style="margin:0">
-        <svg class="arc" viewBox="0 0 900 370" role="img" aria-label="Hey, Gill.">
-          <defs><path id="titlearc" d="M 70,290 A 400,230 0 0 1 830,290" fill="none"/></defs>
-          <g text-anchor="middle" stroke-linejoin="round" stroke-linecap="round"
-             style="filter:drop-shadow(0 7px 0 rgba(58,27,87,.22))">
-            <text fill="none" stroke="#3A1B57" stroke-width="46"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-            <text fill="none" stroke="#5B2C83" stroke-width="38"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-            <text fill="none" stroke="#2E5BAA" stroke-width="28"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-            <text fill="none" stroke="#3DA35D" stroke-width="19"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-            <text fill="none" stroke="#F2C94C" stroke-width="10"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-            <text fill="#E8368F"><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
-          </g>
-        </svg>
-      </h1>
+  <div class="hero-stack">
+    <h1>
+      <svg class="groovy title" viewBox="0 0 1000 386" role="img" aria-label="Hey, Gill.">
+        <defs><path id="titlearc" d="M 25,325 A 490,200 0 0 1 975,325" fill="none"/></defs>
+        <g text-anchor="middle">
+          <text><textPath href="#titlearc" startOffset="50%">Hey, Gill.</textPath></text>
+        </g>
+      </svg>
+    </h1>
 
-      <p style="margin:0"><span class="banner">Roll up for the birthday tour</span></p>
+    <span class="banner">Roll up for the birthday tour</span>
 
-      <div class="datestar">
-        <svg class="star" viewBox="0 0 100 100" fill="#F2C94C" stroke="#3A1B57" stroke-width="7" aria-hidden="true"><use href="#s-star"/></svg>
-        <span class="txt">Saturday, 12 September 2026</span>
-        <svg class="star" viewBox="0 0 100 100" fill="#F2C94C" stroke="#3A1B57" stroke-width="7" aria-hidden="true"><use href="#s-star"/></svg>
-      </div>
+    <p class="hero-date">Saturday, 12 September 2026</p>
+  </div>
+</header>
 
-      <p class="hero-sub">Two stops, one night. Dinner first, golf after. A splendid time is guaranteed for all.</p>
-    </div>
-  </header>
-
-  <div class="rainbow" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span></div>
-
-  <!-- ============ DETAILS ============ -->
-  <section id="details">
-    <div class="inner">
-      <div class="sec-head">
-        <span class="pill a">The Details</span>
-        <span class="kicker">Birthday tour, two stops — pins below</span>
-      </div>
-
-      <div class="stops">
-
-        <!-- STOP 1 -->
-        <article class="card">
-          <div class="num" aria-hidden="true">1</div>
-          <p class="stop-label">Stop One</p>
-          <h2 class="venue">Borro Manila</h2>
-          <p class="addr">Sct. Borromeo Cor. Sct. Tobias,<br>Quezon City, Philippines, 1103</p>
-          <div class="when">
-            <span class="chip date">Sep 12, 2026</span>
-            <span class="chip time">6:30 PM</span>
-          </div>
-          <div class="mapframe">
-            <iframe
-              title="Map to Borro Manila, Quezon City"
-              src="https://maps.google.com/maps?q=Sct.%20Borromeo%20Cor.%20Sct.%20Tobias%2C%20Quezon%20City%2C%20Philippines%2C%201103&amp;z=16&amp;output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <a class="pin" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&amp;query=Sct.+Borromeo+Cor.+Sct.+Tobias,+Quezon+City,+Philippines,+1103">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-            Open in Google Maps
-          </a>
-        </article>
-
-        <!-- STOP 2 -->
-        <article class="card">
-          <div class="num" aria-hidden="true">2</div>
-          <p class="stop-label">Stop Two</p>
-          <h2 class="venue">Friends Screen<br>Simulation Golf</h2>
-          <p class="addr">4F, Century Mall, Century City,<br>Kalayaan Ave, Makati, Philippines, 1210</p>
-          <div class="when">
-            <span class="chip date">Same night</span>
-            <span class="chip time">10:00 PM</span>
-          </div>
-          <div class="mapframe">
-            <iframe
-              title="Map to Friends Screen Simulation Golf, Century Mall, Makati"
-              src="https://maps.google.com/maps?q=Century%20Mall%2C%20Century%20City%2C%20Kalayaan%20Ave%2C%20Makati%2C%20Philippines%2C%201210&amp;z=16&amp;output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <a class="pin" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&amp;query=Century+Mall,+Century+City,+Kalayaan+Ave,+Makati,+Philippines,+1210">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-            Open in Google Maps
-          </a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="rainbow" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span></div>
-
-  <!-- ============ OUTFIT ============ -->
-  <section id="outfit">
-    <div class="inner">
-      <div class="sec-head">
-        <span class="pill b">What to Wear</span>
-        <span class="kicker">Pastel &amp; vibrant — Eras Tour energy, Beatles colorways</span>
-      </div>
-
-      <div class="swatches" aria-hidden="true">
-        <span class="sw" style="background:#E8368F"></span>
-        <span class="sw" style="background:#F2C94C"></span>
-        <span class="sw" style="background:#3DA35D"></span>
-        <span class="sw" style="background:#2E5BAA"></span>
-        <span class="sw" style="background:#5B2C83"></span>
-        <span class="sw" style="background:#F7B6D2"></span>
-        <span class="sw" style="background:#BFE3C4"></span>
-        <span class="sw" style="background:#AFC8F0"></span>
-      </div>
-
-      <div class="pins">
-        <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/354728908171732326/" class="pin-fallback" target="_blank" rel="noopener">Look 1 ↗</a></div>
-        <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/522769469268772432/" class="pin-fallback" target="_blank" rel="noopener">Look 2 ↗</a></div>
-        <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/498070040062842247/" class="pin-fallback" target="_blank" rel="noopener">Look 3 ↗</a></div>
-        <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/687221224432804105/" class="pin-fallback" target="_blank" rel="noopener">Look 4 ↗</a></div>
-      </div>
-
-      <p class="pin-note">Reference only — wear it your way. Tap any pin to open it on Pinterest.</p>
-    </div>
-  </section>
-
-  <div class="rainbow" aria-hidden="true"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span><span class="s5"></span></div>
-
-  <!-- ============ RSVP ============ -->
-  <section id="rsvp">
-    <div class="inner">
-      <span class="rsvp-pill">R.S.V.P.</span>
-      <p class="line">Let Gill know you're coming.</p>
-      <div class="stars" aria-hidden="true">
-        <svg class="star" viewBox="0 0 100 100" fill="#F2C94C"><use href="#s-star"/></svg>
-        <svg class="star" viewBox="0 0 100 100" fill="#E8368F"><use href="#s-star"/></svg>
-        <svg class="star" viewBox="0 0 100 100" fill="#3DA35D"><use href="#s-star"/></svg>
-      </div>
-    </div>
-  </section>
-
-  <div class="rainbow" aria-hidden="true"><span class="s5"></span><span class="s4"></span><span class="s3"></span><span class="s2"></span><span class="s1"></span></div>
-
-  <footer>Roll up · Roll up · Roll up for the birthday tour</footer>
-
+<!-- divider: sun -> sky -->
+<div class="wavy" aria-hidden="true">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <use href="#wv" y="-56" fill="#E8331C"/>
+    <use href="#wv" y="-38" fill="#F0801F"/>
+    <use href="#wv" y="-20" fill="#EE3D8F"/>
+    <use href="#wv" y="-2"  fill="#1FA84E"/>
+    <use href="#wv" y="16"  fill="#8FBEE8"/>
+  </svg>
 </div>
+
+<!-- ============ DETAILS ============ -->
+<section id="details">
+  <div class="confetti" style="color:#FBF0D2" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="sec-head">
+      <svg class="groovy head" viewBox="0 0 800 190" role="img" aria-label="The Details">
+        <defs><path id="arc-details" d="M 40,156 A 400,152 0 0 1 760,156" fill="none"/></defs>
+        <g text-anchor="middle"><text><textPath href="#arc-details" startOffset="50%">The Details</textPath></text></g>
+      </svg>
+    </div>
+
+    <div class="stops">
+      <article class="card">
+        <div class="num" aria-hidden="true">1</div>
+        <p class="stop-label">Stop One</p>
+        <h2 class="venue">Borro Manila</h2>
+        <p class="addr">Sct. Borromeo Cor. Sct. Tobias,<br>Quezon City, Philippines, 1103</p>
+        <div class="when">
+          <span class="chip date">Sep 12, 2026</span>
+          <span class="chip time">6:30 PM</span>
+        </div>
+        <div class="mapframe">
+          <iframe title="Map to Borro Manila, Quezon City"
+            src="https://maps.google.com/maps?q=Sct.%20Borromeo%20Cor.%20Sct.%20Tobias%2C%20Quezon%20City%2C%20Philippines%2C%201103&amp;z=16&amp;output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a class="pin" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Sct.+Borromeo+Cor.+Sct.+Tobias,+Quezon+City,+Philippines,+1103">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Open in Google Maps
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="num" aria-hidden="true">2</div>
+        <p class="stop-label">Stop Two</p>
+        <h2 class="venue">Friends Screen<br>Simulation Golf</h2>
+        <p class="addr">4F, Century Mall, Century City,<br>Kalayaan Ave, Makati, Philippines, 1210</p>
+        <div class="when">
+          <span class="chip date">Same night</span>
+          <span class="chip time">10:00 PM</span>
+        </div>
+        <div class="mapframe">
+          <iframe title="Map to Friends Screen Simulation Golf, Century Mall, Makati"
+            src="https://maps.google.com/maps?q=Century%20Mall%2C%20Century%20City%2C%20Kalayaan%20Ave%2C%20Makati%2C%20Philippines%2C%201210&amp;z=16&amp;output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a class="pin" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Century+Mall,+Century+City,+Kalayaan+Ave,+Makati,+Philippines,+1210">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Open in Google Maps
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- divider: sky -> grass -->
+<div class="wavy" aria-hidden="true">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <use href="#wv" y="-56" fill="#E8331C"/>
+    <use href="#wv" y="-38" fill="#F5B316"/>
+    <use href="#wv" y="-20" fill="#EE3D8F"/>
+    <use href="#wv" y="-2"  fill="#5B21A0"/>
+    <use href="#wv" y="16"  fill="#1FA84E"/>
+  </svg>
+</div>
+
+<!-- ============ OUTFIT ============ -->
+<section id="outfit">
+  <div class="confetti" style="color:#FBF0D2" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="sec-head">
+      <svg class="groovy head" viewBox="0 0 800 190" role="img" aria-label="What to Wear">
+        <defs><path id="arc-outfit" d="M 40,156 A 400,152 0 0 1 760,156" fill="none"/></defs>
+        <g text-anchor="middle"><text><textPath href="#arc-outfit" startOffset="50%">What to Wear</textPath></text></g>
+      </svg>
+    </div>
+
+    <p class="dress">Pastel &amp; vibrant</p>
+
+    <div class="swatches" aria-hidden="true">
+      <span class="sw" style="background:#EE3D8F"></span>
+      <span class="sw" style="background:#F5B316"></span>
+      <span class="sw" style="background:#E8331C"></span>
+      <span class="sw" style="background:#1FA84E"></span>
+      <span class="sw" style="background:#5B21A0"></span>
+      <span class="sw" style="background:#F7B6D2"></span>
+      <span class="sw" style="background:#A5E3F0"></span>
+      <span class="sw" style="background:#FBF0D2"></span>
+    </div>
+
+    <div class="pins">
+      <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/354728908171732326/" class="pin-fallback" target="_blank" rel="noopener">Look 1 &#8599;</a></div>
+      <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/522769469268772432/" class="pin-fallback" target="_blank" rel="noopener">Look 2 &#8599;</a></div>
+      <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/498070040062842247/" class="pin-fallback" target="_blank" rel="noopener">Look 3 &#8599;</a></div>
+      <div class="pinbox"><a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/687221224432804105/" class="pin-fallback" target="_blank" rel="noopener">Look 4 &#8599;</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- divider: grass -> grape -->
+<div class="wavy" aria-hidden="true">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <use href="#wv" y="-56" fill="#E8331C"/>
+    <use href="#wv" y="-38" fill="#F5B316"/>
+    <use href="#wv" y="-20" fill="#EE3D8F"/>
+    <use href="#wv" y="-2"  fill="#8FBEE8"/>
+    <use href="#wv" y="16"  fill="#5B21A0"/>
+  </svg>
+</div>
+
+<!-- ============ RSVP ============ -->
+<section id="rsvp">
+  <div class="confetti" style="color:#F5B316" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="sec-head">
+      <svg class="groovy head" viewBox="0 0 800 190" role="img" aria-label="R.S.V.P.">
+        <defs><path id="arc-rsvp" d="M 40,156 A 400,152 0 0 1 760,156" fill="none"/></defs>
+        <g text-anchor="middle"><text><textPath href="#arc-rsvp" startOffset="50%">R.S.V.P.</textPath></text></g>
+      </svg>
+    </div>
+    <p class="line">Let Gill know you're coming!</p>
+    <p class="sub">Send her a DM to confirm your attendance!</p>
+    <div class="discs" aria-hidden="true">
+      <svg viewBox="0 0 100 100" style="color:#F5B316"><use href="#s-vinyl"/></svg>
+      <svg viewBox="0 0 100 100" style="color:#EE3D8F"><use href="#s-vinyl"/></svg>
+      <svg viewBox="0 0 100 100" style="color:#1FA84E"><use href="#s-vinyl"/></svg>
+    </div>
+  </div>
+</section>
 
 <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
 </body>
